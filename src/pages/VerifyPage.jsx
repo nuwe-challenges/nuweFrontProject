@@ -20,7 +20,7 @@ import { Sidebar } from '../components/Sidebar/Sidebar';
 import { IoIosArrowBack } from 'react-icons/io';
 import { AiFillSafetyCertificate } from 'react-icons/ai';
 import { RiCheckboxCircleLine } from 'react-icons/ri';
-import { RiCheckboxCircleFill } from 'react-icons/ri';
+// import { RiCheckboxCircleFill } from 'react-icons/ri';
 
 
 const VerifyContainer = styled.div`
