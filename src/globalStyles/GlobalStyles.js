@@ -28,6 +28,7 @@ export const GlobalStyles = createGlobalStyle`
     // Sombras
     --box-shadow: 0 4px 4px rgba(3, 3, 3, .1);
     --box-shadow-input: 0 0 4px var(--primary);
+    --box-shadow-hover: 0 0 4px var(--primary);
 
 }
 

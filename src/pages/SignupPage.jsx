@@ -1,8 +1,12 @@
 
 import styled from 'styled-components';
 
+import { useState } from 'react';
+
 // REACT RESPONSIVE
 import { QueryDesktop } from './../utilities/useMediaQuery';
+
+import validator from 'validator';
 
 // HISTORY ROUTE
 import { useHistory } from 'react-router-dom';
@@ -45,33 +49,26 @@ import {
 
 
 
+
 const SignupContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 
-    @media screen and (min-width: 1024px) {
-        flex: 0 0 50%;
-    }
+        @media screen and (min-width: 1024px) {
+            flex: 0 0 50%;
+        }
 
 
     main {
+        height: 100%;
         max-width: 40rem;
         margin: 0 auto;
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 8rem 10rem 46rem;
         align-items: center;
-        height: 100%;
-
-        @media screen and (min-width: 1024px) {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            align-items: center;
-            grid-template-rows: 10rem 8rem 54rem;
-        }
     }
 
 `
@@ -82,9 +79,47 @@ export const SignupPage = () => {
 
     let history = useHistory();
 
+    // Estados
+    
+    const [showPass, setShowPass] = useState(true);
+    const [acceptTerms, setAcceptTerms] = useState(false);
+
+    const [user, setUser] = useState({
+
+        fullName: '',
+        mail: '',
+        pass: ''
+
+    });
+
     // Ruteo con history
     const goToHome = () => history.push('/');
-    const goToLocation = () => history.push('/location');
+    // const goToLocation = () => history.push('/location');
+
+    // Operations
+    const handleShowPass = () => setShowPass(!showPass);
+    const handleFullName = (e) => setUser({ ...user, fullName: e.target.value} );
+
+    const handleMail = (e) => {
+        validator.isEmail('testing@io.com');
+        setUser({ ...user, mail: e.target.value} );
+    };
+
+    const handlePass = (e) => setUser({ ...user, pass: e.target.value} );
+     
+
+    const handleCheckTerms = () => setAcceptTerms(true);
+
+    const handleForm = (e) => {
+        e.preventDefault();
+
+        if(acceptTerms) {
+            localStorage.setItem('User', JSON.stringify(user));
+            history.push('/location');
+        }
+
+    };
+
 
     return (
 
@@ -113,28 +148,28 @@ export const SignupPage = () => {
                     <p className='signup__sub-text'>Para poder revisar que se trata de una cuenta real, necesitamos la siguiente información</p>
                 </TitleBox>
 
-                <Form className='signup__form'>
+                <Form onSubmit={handleForm} className='signup__form'>
 
                     <InputBox>
                         <p>Nombre completo *</p>
-                        <Input required type="text" />
+                        <Input onChange={handleFullName} required type="text" />
                     </InputBox>
 
                     <InputBox>
                         <p>Email *</p>
-                        <Input required type="text" />
+                        <Input onChange={handleMail} required type="mail" />
                     </InputBox>
 
                     <InputBox>
                         <p>Contraseña *</p>
-                        <Input type="password" name="password" required />
-                        <ImEyeBlocked />
+                        { showPass ? <Input onChange={handlePass} type='password' />  :  <Input onChange={handlePass} typer='text' /> }
+                        { showPass ? <ImEye onClick={handleShowPass} />  :  <ImEyeBlocked onClick={handleShowPass} /> }
                     </InputBox>
 
                     <CheckTextBox>
 
-                        <InputCheck 
-                            name='accept' 
+                        <InputCheck
+                            onClick={handleCheckTerms}
                             type='checkbox' 
                         /> 
                         
@@ -146,7 +181,7 @@ export const SignupPage = () => {
 
                         <BtnBox>
 
-                            <Btn onClick={goToLocation} className='btn'>Registrar cuenta</Btn>
+                            <Btn type='submit' className='btn'>Registrar cuenta</Btn>
 
                         </BtnBox>  
 

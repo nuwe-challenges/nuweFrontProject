@@ -9,6 +9,8 @@ import { QueryDesktop } from './../utilities/useMediaQuery';
 
 import 'react-phone-number-input/style.css';
 import PhoneInput from 'react-phone-number-input';
+import ReactFlagsSelect from 'react-flags-select';
+import { Us } from 'react-flags-select';
 
 // HISTORY ROUTE
 import { useHistory } from 'react-router-dom';
@@ -37,30 +39,23 @@ const LocationContainer = styled.div`
     align-items: center;
     height: 100vh;
 
+        @media screen and (min-width: 1024px) {
+            flex: 0 0 50%;
+        }
+
     main {
         height: 100%;
         max-width: 40rem;
         margin: 0 auto;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 8rem 16rem 46rem;
+        grid-template-rows: 8rem 10rem 46rem;
         align-items: center;
-
-        @media screen and (min-width: 1024px) {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            align-items: center;
-            grid-template-rows: 10rem 8rem 54rem;
-        }
     }
 
-    @media screen and (min-width: 1024px) {
-        flex: 0 0 50%;
-    }
+    
 
 `
-
 
 // MAIN COMPONENT------------------------
 export const LocationPage = () => {
@@ -70,6 +65,7 @@ export const LocationPage = () => {
 
     // Estados
     const [phone, setPhone] = useState();
+    const [selected, setSelected] = useState('');
 
     // HandleClicks
     const goToSignup = () => history.push('/signup');
@@ -97,7 +93,7 @@ export const LocationPage = () => {
 
                 </Header>
 
-                <TitleBox>
+                <TitleBox className='location__title-box'>
                     <h1>¡Completa tu perfil!</h1>
                     <p className='location__sub-text'>Para poder revisar que se trata de una cuenta real, necesitamos la siguiente información</p>
                 </TitleBox>
@@ -105,7 +101,7 @@ export const LocationPage = () => {
                 <Form className='location__form'>
 
                     <InputBox>
-                        <p>NÚMERO DE TELÉFONO</p>
+                        <p>Número de teléfono</p>
                         <PhoneInput
                             className='input__phone'
                             countryCallingCodeEditable={false}
@@ -119,13 +115,18 @@ export const LocationPage = () => {
                     </InputBox>
 
                     <InputBox>
-                        <p>DIRECCIÓN</p>
+                        <p>Dirección</p>
                         <Input type="text" />
                     </InputBox>
 
                     <InputBox>
-                        <p>PAÍS DE RESIDENCIA</p>
-                        <Input type="text" />
+                        <p>País de residencia</p>
+
+                        <ReactFlagsSelect
+                            selected={selected}
+                            onSelect={code => setSelected(code)}
+                        />
+
                     </InputBox>
                     
                     <BtnBox className='location__box' >

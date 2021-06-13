@@ -14,7 +14,7 @@ import { VscOrganization } from 'react-icons/vsc';
 
 // ELEMENTS COMPONENTS
 import { TitleBox } from '../components/TitleBox/TitleBox';
-import { LoginTextBox  } from '../components/LoginText/LoginText';
+import { LoginText  } from '../components/LoginText/LoginText';
 import { Sidebar  } from '../components/Sidebar/Sidebar';
 
 import { 
@@ -57,6 +57,8 @@ export const HomePage = () => {
 
     // Ruteo con history
     let history = useHistory();
+
+    
 
     // HandleClicks
     const goToSignup = () => history.push('/signup');
@@ -104,9 +106,9 @@ export const HomePage = () => {
                 </UserBox>
                 
 
-                <LoginTextBox>
+                <LoginText>
                     <p>¿Ya tienes cuenta? <span onClick={goToLogin}> Inicia sesión </span></p>
-                </LoginTextBox> 
+                </LoginText> 
 
             </main>
 

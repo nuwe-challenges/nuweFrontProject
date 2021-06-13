@@ -34,17 +34,9 @@ const VerifyContainer = styled.div`
         margin: 0 auto;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 8rem 16rem 46rem;
+        grid-template-rows: 8rem 10rem 46rem;
 
         align-items: center;
-
-        @media screen and (min-width: 1024px) {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            align-items: center;
-            grid-template-rows: 10rem 8rem 54rem;
-        }
     }
 
     @media screen and (min-width: 1024px) {
@@ -85,7 +77,7 @@ export const VerifyPage = () => {
 
                 </Header> 
 
-                <TitleBox>
+                <TitleBox className='verify__title-box'>
                     <h1>Verifica tu perfil</h1>
                     <p className='location__sub-text'>Para poder revisar que se trata de una cuenta real, necesitamos la siguiente información</p>
                 </TitleBox>

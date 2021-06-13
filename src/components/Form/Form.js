@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 
 export const Form = styled.form`
-    height: 70% ;
+    height: 100% ;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,7 +18,7 @@ export const Form = styled.form`
     }
 
     @media screen and (min-width: 1024px) {
-        margin-top: 2rem;
+        margin-top: 4rem;
     }
 `
 

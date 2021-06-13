@@ -17,10 +17,14 @@ export const TitleBox = styled.div`
             height: 0;
         }
 
-    &.signup__title-box {
+    &.signup__title-box, 
+    &.location__title-box,
+    &.verify__title-box {
         padding: 2rem 0;
     }
+
     
+
     h1, h2 {
         font-size: var(--fs-titles);
         color: var(--primary);

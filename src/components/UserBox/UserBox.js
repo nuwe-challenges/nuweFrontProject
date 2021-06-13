@@ -17,6 +17,18 @@ export const User = styled.div`
     border: 1px solid none;
     border-radius: 1rem;
     box-shadow: var(--box-shadow);
+    cursor: pointer;
+
+        @media screen and (min-width: 1024px) {
+            &:hover {
+                box-shadow: var( --box-shadow-hover);
+            }
+            &:active {
+                background-color: var(--primary);
+            }
+        }
+
+    
 
     svg {
         font-size: 6rem;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 
-export const LoginTextBox = styled.div`
+export const LoginText = styled.div`
 
     height: 80%;
     display: flex;
@@ -9,12 +9,12 @@ export const LoginTextBox = styled.div`
     justify-content: flex-start;
     align-items: center;
 
-    @media screen and (min-width: 1024px) {
-        position: absolute;
-        top: 4rem;
-        right: 4rem;
-        height: 0;
-    }
+        @media screen and (min-width: 1024px) {
+            position: absolute;
+            top: 4rem;
+            right: 4rem;
+            height: 0;
+        }
 
     p {
         font-size: 1.6rem;
@@ -23,6 +23,10 @@ export const LoginTextBox = styled.div`
 
     span {
         color: var(--primary);
+        
+        @media screen and (min-width: 1024px) {
+            cursor: pointer;
+        }
     }
 
 `
