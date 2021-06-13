@@ -1,6 +1,7 @@
 
 // Estilos Globales
 import { GlobalStyles } from './globalStyles/GlobalStyles';
+import { useState } from 'react';
 
 // REACT ROUTER-----------------
 import { 
@@ -10,6 +11,7 @@ import {
 
 } from 'react-router-dom';
 
+import { UserProvider } from './context/UserContext';
 
 
 // PÁGINAS----------------------
@@ -21,19 +23,39 @@ import { LoginPage }      from './pages/LoginPage';
 
 
 
+
 // COMPONENT--------------------
 function App() {
+
+  const [user, setUser] = useState({
+
+    fullName: '',
+    mail: '',
+    pass: '',
+    phone: '',
+    adress: '',
+    country: '',
+    card: '',
+    secret: ''
+
+  });
 
   return (
 
     <Router>
-      <GlobalStyles />
 
-      <Route exact path='/'           component={ HomePage } />
-      <Route exact path='/login'      component={ LoginPage } />
-      <Route exact path='/signup'     component={ SignupPage } />
-      <Route exact path='/location'   component={ LocationPage } />
-      <Route exact path='/verify'     component={ VerifyPage } />
+    <UserProvider value={ {user, setUser} }>
+
+        <GlobalStyles />
+
+        <Route exact path='/'           component={ HomePage } />
+        <Route exact path='/login'      component={ LoginPage } />
+        <Route exact path='/signup'     component={ SignupPage } />
+        <Route exact path='/location'   component={ LocationPage } />
+        <Route exact path='/verify'     component={ VerifyPage } />
+
+    </UserProvider>
+
     
     </Router>
 

@@ -2,15 +2,14 @@
 
 import styled from 'styled-components';
 
-import { useState } from 'react';
+
+import { useContext, useState } from 'react';
 
 // REACT RESPONSIVE
 import { QueryDesktop } from './../utilities/useMediaQuery';
 
 import 'react-phone-number-input/style.css';
 import PhoneInput from 'react-phone-number-input';
-import ReactFlagsSelect from 'react-flags-select';
-import { Us } from 'react-flags-select';
 
 // HISTORY ROUTE
 import { useHistory } from 'react-router-dom';
@@ -29,6 +28,9 @@ import { Sidebar } from '../components/Sidebar/Sidebar';
 import { IoIosArrowBack } from 'react-icons/io';
 import { AiFillSafetyCertificate } from 'react-icons/ai';
 
+
+// Context para user
+import UserContext from '../context/UserContext';
 
 
 // MAIN COMPONENT
@@ -60,16 +62,30 @@ const LocationContainer = styled.div`
 // MAIN COMPONENT------------------------
 export const LocationPage = () => {
 
+    const {user, setUser} = useContext(UserContext);
+
     // Ruteo con history
     let history = useHistory();
 
     // Estados
-    const [phone, setPhone] = useState();
-    const [selected, setSelected] = useState('');
+    const [phone, setPhone] = useState('');
 
     // HandleClicks
     const goToSignup = () => history.push('/signup');
     const goToVerify = () => history.push('/verify');
+
+
+    const handleAdress = (e) => setUser({...user, adress: e.target.value});
+    const handleCountry = (e) => setUser({...user, country: e.target.value});
+    const handleForm = (e) => {
+        e.preventDefault();
+
+        let user = JSON.parse(localStorage.getItem('User') );
+
+        localStorage.setItem('User', JSON.stringify(user) );
+        history.push('/verify');
+
+    };
 
     return (
 
@@ -98,17 +114,17 @@ export const LocationPage = () => {
                     <p className='location__sub-text'>Para poder revisar que se trata de una cuenta real, necesitamos la siguiente información</p>
                 </TitleBox>
 
-                <Form className='location__form'>
+                <Form onSubmit={handleForm} className='location__form'>
 
                     <InputBox>
                         <p>Número de teléfono</p>
                         <PhoneInput
+                            type='tel'
                             className='input__phone'
                             countryCallingCodeEditable={false}
                             initialValueFormat="national"
                             international
                             defaultCountry="ES"
-                            placeholder="Número de teléfono"
                             value={phone}
                             onChange={setPhone}
                         />
@@ -116,16 +132,13 @@ export const LocationPage = () => {
 
                     <InputBox>
                         <p>Dirección</p>
-                        <Input type="text" />
+                        <Input onChange={handleAdress} type="text" />
                     </InputBox>
 
                     <InputBox>
                         <p>País de residencia</p>
-
-                        <ReactFlagsSelect
-                            selected={selected}
-                            onSelect={code => setSelected(code)}
-                        />
+                        <Input onChange={handleCountry}/>
+                        
 
                     </InputBox>
                     

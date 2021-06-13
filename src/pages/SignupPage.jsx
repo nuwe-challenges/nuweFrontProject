@@ -1,7 +1,7 @@
 
 import styled from 'styled-components';
 
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 // REACT RESPONSIVE
 import { QueryDesktop } from './../utilities/useMediaQuery';
@@ -20,6 +20,11 @@ import { IoIosArrowBack } from 'react-icons/io';
 // ELEMENTS COMPONENTS-------------------------
 import { TitleBox } from '../components/TitleBox/TitleBox';
 import { Sidebar } from '../components/Sidebar/Sidebar';
+
+// Context para user
+import UserContext from '../context/UserContext';
+
+
 
 import { 
     Form, 
@@ -84,13 +89,8 @@ export const SignupPage = () => {
     const [showPass, setShowPass] = useState(true);
     const [acceptTerms, setAcceptTerms] = useState(false);
 
-    const [user, setUser] = useState({
-
-        fullName: '',
-        mail: '',
-        pass: ''
-
-    });
+    const {user, setUser} = useContext(UserContext);
+    
 
     // Ruteo con history
     const goToHome = () => history.push('/');
