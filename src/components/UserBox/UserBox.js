@@ -10,12 +10,13 @@ export const UserBox = styled.div`
 export const User = styled.div`
 
     display: flex;
+    align-items: center;
     width: 85%;
     margin: 0 auto;
     padding: 2rem 1rem;
     border: 1px solid none;
     border-radius: 1rem;
-    box-shadow: 0 4px 8px rgba(3, 3, 3, .1);
+    box-shadow: var(--box-shadow);
 
     svg {
         font-size: 6rem;

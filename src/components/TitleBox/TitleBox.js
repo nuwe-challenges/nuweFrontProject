@@ -1,7 +1,7 @@
 
 import styled from 'styled-components';
 
-export const TitleBox = styled.h1`
+export const TitleBox = styled.div`
 
     margin: 0 auto;
     display: flex;
@@ -9,18 +9,35 @@ export const TitleBox = styled.h1`
     align-items: center;
     justify-content: flex-end;
     height: 100%;
-    padding: 1.2rem 0;
+    padding: 4rem 0;
 
-    h1 {
-        font-size: var(--fs-titles);
-        font-weight: 600;
+    @media screen and (min-width: 1024px) {
+        padding: 0;
     }
 
-    p {
+    h1, h2 {
+        font-size: var(--fs-titles);
+        color: var(--primary);
+        font-weight: 600;
+        margin: 0 auto;
+    }
+
+    h2 {
+        font-size: 2.2rem;
+        text-align: center;
+    }
+
+    p, .location__sub-text {
         color: var(--clr-paragraph);
         font-size: var(--fs-sub-titles);
         font-weight: 400;
-        width: 30rem;
+        width: 36rem;
+        padding: 0 2.2rem;
+
+    }
+
+    .location__sub-text, .signup__sub-text {
+        font-size: 1.2rem;
     }
     
     

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 
 export const LoginTextBox = styled.div`
+
     height: 80%;
     display: flex;
     flex-direction: column;
@@ -14,7 +15,7 @@ export const LoginTextBox = styled.div`
     }
 
     span {
-        color: green;
+        color: var(--primary);
     }
-    
+
 `

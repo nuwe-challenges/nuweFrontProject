@@ -1,5 +1,13 @@
 
+
 import styled from 'styled-components';
+
+// REACT RESPONSIVE
+import { QueryDesktop } from './../utilities/useMediaQuery';
+
+// HISTORY ROUTE
+import { useHistory } from 'react-router-dom';
+
 
 import { AiOutlineCode } from 'react-icons/ai';
 import { VscOrganization } from 'react-icons/vsc';
@@ -7,6 +15,7 @@ import { VscOrganization } from 'react-icons/vsc';
 // ELEMENTS COMPONENTS
 import { TitleBox } from '../components/TitleBox/TitleBox';
 import { LoginTextBox  } from '../components/LoginText/LoginText';
+import { Sidebar  } from '../components/Sidebar/Sidebar';
 
 import { 
 
@@ -18,31 +27,48 @@ import {
 
 
 
+
 // CONTAINER STYLES
 const HomeContainer = styled.div`
-    background-color: ghostwhite;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 
     main {
-        height: 100vh;
-        width: 38rem;
+        max-width: 40rem;
         margin: 0 auto;
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 30rem 1fr;
         align-items: center;
+        height: 100%;
+
     }
 
+    @media screen and (min-width: 1024px) {
+        flex: 0 0 50%;
+    }
 
 `
-
-
 // MAIN COMPONENT
 export const HomePage = () => {
+
+    // Ruteo con history
+    let history = useHistory();
+
+    // HandleClicks
+    const goToSignup = () => history.push('/signup');
+    const goToLogin = () => history.push('/login');
+
 
     return (
 
         <HomeContainer>
             
+            { QueryDesktop(<Sidebar />) }
+
             <main>
 
                 <TitleBox>
@@ -53,7 +79,7 @@ export const HomePage = () => {
 
                 <UserBox>
 
-                    <User>
+                    <User onClick={goToSignup}>
                         
                         <AiOutlineCode />
 
@@ -79,7 +105,7 @@ export const HomePage = () => {
                 
 
                 <LoginTextBox>
-                    <p>¿Ya tienes cuenta? <span> Inicia sesión </span></p>
+                    <p>¿Ya tienes cuenta? <span onClick={goToLogin}> Inicia sesión </span></p>
                 </LoginTextBox> 
 
             </main>

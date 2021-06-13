@@ -17,8 +17,7 @@ import { HomePage }       from  './pages/HomePage';
 import { SignupPage }     from  './pages/SignupPage';
 import { LocationPage }   from  './pages/LocationPage';
 import { VerifyPage }     from  './pages/VerifyPage';
-
-import { Sidebar } from './components/Sidebar/Sidebar';
+import { LoginPage }      from './pages/LoginPage';
 
 
 
@@ -31,10 +30,10 @@ function App() {
       <GlobalStyles />
 
       <Route exact path='/'           component={ HomePage } />
+      <Route exact path='/login'      component={ LoginPage } />
       <Route exact path='/signup'     component={ SignupPage } />
       <Route exact path='/location'   component={ LocationPage } />
       <Route exact path='/verify'     component={ VerifyPage } />
-      <Route exact path='/sidebar'     component={ Sidebar } />
     
     </Router>
 
