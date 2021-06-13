@@ -37,6 +37,14 @@ const VerifyContainer = styled.div`
         grid-template-rows: 8rem 16rem 46rem;
 
         align-items: center;
+
+        @media screen and (min-width: 1024px) {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            grid-template-rows: 10rem 8rem 54rem;
+        }
     }
 
     @media screen and (min-width: 1024px) {

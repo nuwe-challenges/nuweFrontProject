@@ -6,8 +6,12 @@ export const Header = styled.header`
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 1.4rem 2rem;
+    padding: 1.8rem 2rem;
     height: 100%;
+
+    @media screen and (min-width: 1024px) {
+        height: 20rem;
+    }
 `
 
 export const LeftBox = styled.div`

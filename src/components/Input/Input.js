@@ -21,6 +21,21 @@ export const InputBox = styled.div`
         fill: var(--primary);
     }
 
+    .input__phone {
+        padding: 1.2rem 3rem;
+        margin: 1rem 0;
+        border-radius: .4rem;
+        border: 1px solid rgba(3, 3, 3, .1);
+        box-shadow: var(--box-shadow);
+        width: 30rem;
+        outline: none;
+
+        & > * {
+            border: none;
+            outline: none;
+        }
+    }
+
 `
 
 export const Input = styled.input`

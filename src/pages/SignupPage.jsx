@@ -66,7 +66,11 @@ const SignupContainer = styled.div`
         height: 100%;
 
         @media screen and (min-width: 1024px) {
-            grid-template-rows: 20rem 8rem 1fr;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            grid-template-rows: 10rem 8rem 54rem;
         }
     }
 
@@ -104,12 +108,12 @@ export const SignupPage = () => {
 
                 </Header>
 
-                <TitleBox>
+                <TitleBox className='signup__title-box'>
                     <h2>Registra tu cuenta individual</h2>
                     <p className='signup__sub-text'>Para poder revisar que se trata de una cuenta real, necesitamos la siguiente información</p>
                 </TitleBox>
 
-                <Form>
+                <Form className='signup__form'>
 
                     <InputBox>
                         <p>Nombre completo *</p>

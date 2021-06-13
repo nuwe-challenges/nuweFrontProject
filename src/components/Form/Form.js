@@ -8,6 +8,18 @@ export const Form = styled.form`
     align-items: center;
     justify-content: center;
     padding: .5rem 0;
+
+    &.location__form {
+        height: 100%;
+    }
+
+    &.signup__form {
+        height: 30%;
+    }
+
+    @media screen and (min-width: 1024px) {
+        margin-top: 2rem;
+    }
 `
 
 export const FormBtns = styled.div`

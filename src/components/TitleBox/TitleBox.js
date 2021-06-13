@@ -11,10 +11,16 @@ export const TitleBox = styled.div`
     height: 100%;
     padding: 4rem 0;
 
-    @media screen and (min-width: 1024px) {
-        padding: 0;
-    }
+        @media screen and (min-width: 1024px) {
+            padding: 0;
+            justify-content: flex-start;
+            height: 0;
+        }
 
+    &.signup__title-box {
+        padding: 2rem 0;
+    }
+    
     h1, h2 {
         font-size: var(--fs-titles);
         color: var(--primary);

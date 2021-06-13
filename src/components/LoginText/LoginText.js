@@ -9,6 +9,13 @@ export const LoginTextBox = styled.div`
     justify-content: flex-start;
     align-items: center;
 
+    @media screen and (min-width: 1024px) {
+        position: absolute;
+        top: 4rem;
+        right: 4rem;
+        height: 0;
+    }
+
     p {
         font-size: 1.6rem;
         color: var(--clr-paragraph)

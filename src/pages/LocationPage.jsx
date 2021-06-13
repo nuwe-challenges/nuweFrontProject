@@ -2,8 +2,13 @@
 
 import styled from 'styled-components';
 
+import { useState } from 'react';
+
 // REACT RESPONSIVE
 import { QueryDesktop } from './../utilities/useMediaQuery';
+
+import 'react-phone-number-input/style.css';
+import PhoneInput from 'react-phone-number-input';
 
 // HISTORY ROUTE
 import { useHistory } from 'react-router-dom';
@@ -23,6 +28,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 import { AiFillSafetyCertificate } from 'react-icons/ai';
 
 
+
 // MAIN COMPONENT
 const LocationContainer = styled.div`
 
@@ -39,6 +45,14 @@ const LocationContainer = styled.div`
         grid-template-columns: 1fr;
         grid-template-rows: 8rem 16rem 46rem;
         align-items: center;
+
+        @media screen and (min-width: 1024px) {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            grid-template-rows: 10rem 8rem 54rem;
+        }
     }
 
     @media screen and (min-width: 1024px) {
@@ -53,6 +67,9 @@ export const LocationPage = () => {
 
     // Ruteo con history
     let history = useHistory();
+
+    // Estados
+    const [phone, setPhone] = useState();
 
     // HandleClicks
     const goToSignup = () => history.push('/signup');
@@ -85,11 +102,20 @@ export const LocationPage = () => {
                     <p className='location__sub-text'>Para poder revisar que se trata de una cuenta real, necesitamos la siguiente información</p>
                 </TitleBox>
 
-                <Form>
+                <Form className='location__form'>
 
                     <InputBox>
                         <p>NÚMERO DE TELÉFONO</p>
-                        <Input type="text" />
+                        <PhoneInput
+                            className='input__phone'
+                            countryCallingCodeEditable={false}
+                            initialValueFormat="national"
+                            international
+                            defaultCountry="ES"
+                            placeholder="Número de teléfono"
+                            value={phone}
+                            onChange={setPhone}
+                        />
                     </InputBox>
 
                     <InputBox>
